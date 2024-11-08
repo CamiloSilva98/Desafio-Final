@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     entidad.cpp \
+    gestorarchivos.cpp \
     item.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     entidad.h \
+    gestorarchivos.h \
     item.h \
     mainwindow.h
 
