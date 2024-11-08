@@ -5,15 +5,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    resize(1100, 700);
+    resize(1200, 600);
 
     scene = new QGraphicsScene(this);
     //crearEscena();
 
-    scene->setSceneRect(0, 0, 1100, 700);
+    scene->setSceneRect(0, 0, 1200, 600);
 
     QGraphicsView *view = new QGraphicsView(scene, this);
-    view->setFixedSize(1105, 705);
+    view->setFixedSize(1205, 605);
     view->setBackgroundBrush(QBrush(QColor("black")));
     setCentralWidget(view);
 }

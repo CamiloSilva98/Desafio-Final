@@ -10,11 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     entidad.cpp \
+    item.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     entidad.h \
+    item.h \
     mainwindow.h
 
 FORMS += \
