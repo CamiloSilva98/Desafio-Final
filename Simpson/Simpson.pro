@@ -11,7 +11,6 @@ CONFIG += c++17
 SOURCES += \
     entidad.cpp \
     gestorarchivos.cpp \
-    homero.cpp \
     item.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,7 +19,6 @@ SOURCES += \
 HEADERS += \
     entidad.h \
     gestorarchivos.h \
-    homero.h \
     item.h \
     mainwindow.h \
     tile.h

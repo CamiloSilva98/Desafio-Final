@@ -24,6 +24,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene* scene;   // La escena que se va a construir.
+    void agregarObjeto(int x, int y, const QString &rutaImagen);
     void crearEscena();  // Método para configurar la escena y agregar las paredes
 };
 #endif // MAINWINDOW_H
