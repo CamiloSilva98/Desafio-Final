@@ -11,7 +11,7 @@ bool Tile::esCaminable() const {
 bool Tile::esPuerta() const {
     return tipo == PUERTA;
 }
-
+//
 void Tile::dibujar() const {
     // Código para dibujar el sprite del tile en pantalla
     std::cout << "Dibujando tile en (" << x << ", " << y << ") con sprite " << sprite << std::endl;
