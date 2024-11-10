@@ -13,13 +13,15 @@ SOURCES += \
     gestorarchivos.cpp \
     item.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tile.cpp
 
 HEADERS += \
     entidad.h \
     gestorarchivos.h \
     item.h \
-    mainwindow.h
+    mainwindow.h \
+    tile.h
 
 FORMS += \
     mainwindow.ui
