@@ -3,7 +3,7 @@
 #include "item.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
-#include "personaje.h"
+//#include "personaje.h"
 const int ANCHO_MAPA = 75;
 const int ALTO_MAPA = 38;
 const int TILE_SIZE = 16;
@@ -259,8 +259,11 @@ void MainWindow::crearEscena() {
     agregarObjeto(10,2, "Sprits/librero.png");
     agregarObjeto(32,30, "Sprits/Puerta1.png");
     agregarObjeto(26,9, "Sprits/Cuadro2.png");
+    agregarObjeto(29,15, "Sprits/table.png");
     Item *apple = new Item(13, 13, "Sprits/apple.png", "mazana", "comida", "energia");
+    Item *key1 = new Item(29, 15, "Sprits/key1.png", "llave1", "llave", "abrir");
     scene->addItem(apple);
+    scene->addItem(key1);
 }
 
 MainWindow::~MainWindow()
