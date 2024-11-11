@@ -3,7 +3,7 @@
 #include "item.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
-//#include "personaje.h"
+#include "personaje.h"
 const int ANCHO_MAPA = 75;
 const int ALTO_MAPA = 38;
 const int TILE_SIZE = 16;
@@ -84,7 +84,7 @@ void MainWindow::agregarObjeto(int x, int y, const QString &rutaImagen)
 void MainWindow::inicializarBart()
 {
     // Cargar los sprites de Bart
-    spriteNormal = QPixmap(":/sprites/bart_normal.png");
+    spriteNormal = QPixmap("sprites/bart_normal.png");
     spriteCorriendo = QPixmap(":/sprites/bart_corriendo.png");
     spriteEmpujando = QPixmap(":/sprites/bart_empujando.png");
     spriteLanzando = QPixmap(":/sprites/bart_lanzando.png");
@@ -94,7 +94,7 @@ void MainWindow::inicializarBart()
     bart->setPos(100, 100); // Posición inicial
     bart->setZValue(1); // Para que Bart aparezca sobre el fondo
 }
-
+/*/////////////////////////////////////////////////*/
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     int dx = 0, dy = 0;
@@ -259,11 +259,9 @@ void MainWindow::crearEscena() {
     agregarObjeto(10,2, "Sprits/librero.png");
     agregarObjeto(32,30, "Sprits/Puerta1.png");
     agregarObjeto(26,9, "Sprits/Cuadro2.png");
-    agregarObjeto(29,15, "Sprits/table.png");
+    agregarObjeto(11,12, "Sprits/bart_normal.png");
     Item *apple = new Item(13, 13, "Sprits/apple.png", "mazana", "comida", "energia");
-    Item *key1 = new Item(29, 15, "Sprits/key1.png", "llave1", "llave", "abrir");
     scene->addItem(apple);
-    scene->addItem(key1);
 }
 
 MainWindow::~MainWindow()
