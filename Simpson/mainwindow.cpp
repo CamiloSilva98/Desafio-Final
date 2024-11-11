@@ -71,7 +71,6 @@ MainWindow::MainWindow(QWidget *parent)
     //
 
 }
-<<<<<<< Updated upstream
 void MainWindow::agregarObjeto(int x, int y, const QString &rutaImagen)
 {
     QPixmap pixmapCuadro(rutaImagen); // Cargar la imagen del cuadro
@@ -80,8 +79,6 @@ void MainWindow::agregarObjeto(int x, int y, const QString &rutaImagen)
     QGraphicsPixmapItem *cuadroItem = scene->addPixmap(pixmapCuadro);
     cuadroItem->setPos(x * TILE_SIZE, y * TILE_SIZE); // Posicionar en la cuadrícula
 }
-
-=======
 
 //
 void MainWindow::inicializarBart()
@@ -226,7 +223,7 @@ void MainWindow::lanzarCerveza()
 //
 
 
->>>>>>> Stashed changes
+
 void MainWindow::crearEscena() {
     QPixmap pixmapPared("Sprits/Pared.png");
     QPixmap pixmapPiso("Sprits/Piso.png");
