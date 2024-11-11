@@ -3,7 +3,6 @@
 #include "item.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
-#include "personaje.h"
 const int ANCHO_MAPA = 75;
 const int ALTO_MAPA = 38;
 const int TILE_SIZE = 16;
