@@ -4,7 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <string>
 
-class Entidad : public QGraphicsPixmapItem
+class Entidad : public QGraphicsPixmapItem, public QObject
 {
 protected:
     int posicionX;

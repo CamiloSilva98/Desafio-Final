@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "item.h"
+#include "obstaculo.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
 const int ANCHO_MAPA = 75;
