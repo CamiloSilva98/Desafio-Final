@@ -15,6 +15,7 @@ SOURCES += \
     item.cpp \
     main.cpp \
     mainwindow.cpp \
+    personaje.cpp \
     tile.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     gestorarchivos.h \
     item.h \
     mainwindow.h \
+    personaje.h \
     tile.h
 
 FORMS += \
