@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     enemigo.cpp \
+    enemigo.cpp \
     entidad.cpp \
     gestorarchivos.cpp \
     item.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
     tile.cpp
 
 HEADERS += \
+    enemigo.h \
     enemigo.h \
     entidad.h \
     gestorarchivos.h \
