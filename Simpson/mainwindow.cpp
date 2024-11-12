@@ -299,9 +299,9 @@ void MainWindow::crearEscena() {
     agregarObjeto(10,2, "Sprits/librero.png");
     agregarObjeto(32,30, "Sprits/Puerta1.png");
     agregarObjeto(26,9, "Sprits/Cuadro2.png");
-    agregarObjeto(29,15, "Sprits/table.png");
+    agregarObjeto(29,16, "Sprits/table.png");
     Item *apple = new Item(13, 13, "Sprits/apple.png", "mazana", "devuelve la energia", "salud");
-    Item *key2 = new Item(29, 15, "Sprits/key2.png", "llaveB", "abrir la puerta final", "llave");
+    Item *key2 = new Item(29, 16, "Sprits/key2.png", "llaveB", "abrir la puerta final", "llave");
     scene->addItem(apple);
     scene->addItem(key2);
     agregarObjeto(72,9, "Sprits/librero2.png");
@@ -309,14 +309,30 @@ void MainWindow::crearEscena() {
     Item *beer = new Item(44, 2, "Sprits/beer1.png", "beer", "para dar a homero", "beer");
     scene->addItem(beer);
     ObjetoPesado *mesa1 = new ObjetoPesado(39, 28, "Sprits/table.png", 5);
-    ObjetoPesado *mesa2 = new ObjetoPesado(20, 28, "Sprits/table.png", 5);
+    ObjetoPesado *mesa2 = new ObjetoPesado(21, 28, "Sprits/table.png", 5);
     ObjetoPesado *mesa3 = new ObjetoPesado(19, 24, "Sprits/table.png", 5);
-    ObjetoPesado *mesa4 = new ObjetoPesado(36, 26, "Sprits/table.png", 5);
-    ObjetoPesado *mesa5 = new ObjetoPesado(34, 24, "Sprits/table.png", 5);
-    ObjetoPesado *mesa6 = new ObjetoPesado(32, 24, "Sprits/table.png", 5);
-    ObjetoPesado *mesa7 = new ObjetoPesado(28, 24, "Sprits/table.png", 5);
-    ObjetoPesado *mesa8 = new ObjetoPesado(26, 26, "Sprits/table.png", 5);
-    ObjetoPesado *mesa9 = new ObjetoPesado(36, 22, "Sprits/table.png", 5);
+    ObjetoPesado *mesa4 = new ObjetoPesado(35, 26, "Sprits/table.png", 5);
+    ObjetoPesado *mesa5 = new ObjetoPesado(33, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa6 = new ObjetoPesado(31, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa7 = new ObjetoPesado(27, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa8 = new ObjetoPesado(25, 26, "Sprits/table.png", 5);
+    ObjetoPesado *mesa9 = new ObjetoPesado(35, 22, "Sprits/table.png", 5);
+    ObjetoPesado *mesa10 = new ObjetoPesado(31, 20, "Sprits/table.png", 5);
+    ObjetoPesado *mesa11 = new ObjetoPesado(27, 20, "Sprits/table.png", 5);
+    ObjetoPesado *mesa12 = new ObjetoPesado(23, 20, "Sprits/table.png", 5);
+    ObjetoPesado *mesa13 = new ObjetoPesado(39, 18, "Sprits/table.png", 5);
+    ObjetoPesado *mesa14 = new ObjetoPesado(29, 18, "Sprits/table.png", 5);
+    ObjetoPesado *mesa15 = new ObjetoPesado(25, 18, "Sprits/table.png", 5);
+    ObjetoPesado *mesa16 = new ObjetoPesado(19, 18, "Sprits/table.png", 5);
+    ObjetoPesado *mesa17 = new ObjetoPesado(33, 18, "Sprits/table.png", 5);
+    scene->addItem(mesa17);
+    scene->addItem(mesa16);
+    scene->addItem(mesa15);
+    scene->addItem(mesa14);
+    scene->addItem(mesa13);
+    scene->addItem(mesa12);
+    scene->addItem(mesa11);
+    scene->addItem(mesa10);
     scene->addItem(mesa9);
     scene->addItem(mesa8);
     scene->addItem(mesa7);
@@ -326,6 +342,12 @@ void MainWindow::crearEscena() {
     scene->addItem(mesa3);
     scene->addItem(mesa2);
     scene->addItem(mesa1);
+    ObjetoPesado *caballete1 = new ObjetoPesado(23, 27, "Sprits/caballete.png", 200);
+    scene->addItem(caballete1);
+    ObjetoPesado *caballete2 = new ObjetoPesado(27, 25, "Sprits/caballete.png", 200);
+    scene->addItem(caballete2);
+    ObjetoPesado *caballete3 = new ObjetoPesado(37, 25, "Sprits/caballete2.png", 200);
+    scene->addItem(caballete3);
 }
 
 MainWindow::~MainWindow()
