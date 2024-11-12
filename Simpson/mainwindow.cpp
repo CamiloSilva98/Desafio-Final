@@ -348,6 +348,9 @@ void MainWindow::crearEscena() {
     scene->addItem(caballete2);
     ObjetoPesado *caballete3 = new ObjetoPesado(37, 25, "Sprits/caballete2.png", 200);
     scene->addItem(caballete3);
+    ObjetoPesado *caballete4 = new ObjetoPesado(39, 23, "Sprits/caballete2.png", 200);
+    scene->addItem(caballete4);
+
 }
 
 MainWindow::~MainWindow()
