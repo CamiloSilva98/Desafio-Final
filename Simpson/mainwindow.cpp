@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "item.h"
 #include "obstaculo.h"
+#include "objetopesado.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
 const int ANCHO_MAPA = 75;
@@ -114,10 +115,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 void MainWindow::agregarObjeto(int x, int y, const QString &rutaImagen)
 {
-    QPixmap pixmapCuadro(rutaImagen); // Cargar la imagen del cuadro
+    QPixmap pixmapImagen(rutaImagen); // Cargar la imagen
 
-    // Crear un item para el cuadro y colocarlo en la posición deseada
-    QGraphicsPixmapItem *cuadroItem = scene->addPixmap(pixmapCuadro);
+    QGraphicsPixmapItem *cuadroItem = scene->addPixmap(pixmapImagen);
     cuadroItem->setPos(x * TILE_SIZE, y * TILE_SIZE); // Posicionar en la cuadrícula
 }
 
@@ -267,15 +267,13 @@ void MainWindow::lanzarCerveza()
 void MainWindow::crearEscena() {
     QPixmap pixmapPared("Sprits/Pared.png");
     QPixmap pixmapPiso("Sprits/Piso.png");
-    //QPixmap pixmapPiso(":/Sprits/Piso.png");
-   // QPixmap pixmapPuerta(":/images/puerta.png");
+
     for (int i = 0; i < ALTO_MAPA; ++i) {
         for (int j = 0; j < ANCHO_MAPA; ++j) {
             int tileType = mapa[i][j];
             QGraphicsPixmapItem *tileItem = nullptr;
             QGraphicsRectItem *tile = nullptr;
 
-            // Elegir la imagen según el tipo de tile
             if (tileType == 1)
             { // Muro
                 tile = scene->addRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, QPen(Qt::black), QBrush(Qt::black));
@@ -310,6 +308,24 @@ void MainWindow::crearEscena() {
     agregarObjeto(42,3, "Sprits/mesaB.png");
     Item *beer = new Item(44, 2, "Sprits/beer1.png", "beer", "para dar a homero", "beer");
     scene->addItem(beer);
+    ObjetoPesado *mesa1 = new ObjetoPesado(39, 28, "Sprits/table.png", 5);
+    ObjetoPesado *mesa2 = new ObjetoPesado(20, 28, "Sprits/table.png", 5);
+    ObjetoPesado *mesa3 = new ObjetoPesado(19, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa4 = new ObjetoPesado(36, 26, "Sprits/table.png", 5);
+    ObjetoPesado *mesa5 = new ObjetoPesado(34, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa6 = new ObjetoPesado(32, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa7 = new ObjetoPesado(28, 24, "Sprits/table.png", 5);
+    ObjetoPesado *mesa8 = new ObjetoPesado(26, 26, "Sprits/table.png", 5);
+    ObjetoPesado *mesa9 = new ObjetoPesado(36, 22, "Sprits/table.png", 5);
+    scene->addItem(mesa9);
+    scene->addItem(mesa8);
+    scene->addItem(mesa7);
+    scene->addItem(mesa6);
+    scene->addItem(mesa5);
+    scene->addItem(mesa4);
+    scene->addItem(mesa3);
+    scene->addItem(mesa2);
+    scene->addItem(mesa1);
 }
 
 MainWindow::~MainWindow()

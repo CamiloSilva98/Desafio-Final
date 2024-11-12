@@ -14,6 +14,7 @@ SOURCES += \
     item.cpp \
     main.cpp \
     mainwindow.cpp \
+    objetopesado.cpp \
     obstaculo.cpp \
     tile.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     gestorarchivos.h \
     item.h \
     mainwindow.h \
+    objetopesado.h \
     obstaculo.h \
     tile.h
 
