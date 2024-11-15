@@ -16,6 +16,7 @@ SOURCES += \
     mainwindow.cpp \
     objetopesado.cpp \
     obstaculo.cpp \
+    personaje.cpp \
     tile.cpp
 
 HEADERS += \
@@ -25,6 +26,7 @@ HEADERS += \
     mainwindow.h \
     objetopesado.h \
     obstaculo.h \
+    personaje.h \
     tile.h
 
 FORMS += \

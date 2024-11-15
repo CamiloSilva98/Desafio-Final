@@ -3,8 +3,10 @@
 #include "item.h"
 #include "obstaculo.h"
 #include "objetopesado.h"
+#include "personaje.h"
 #include <QGraphicsRectItem>
 #include <QBrush>
+
 const int ANCHO_MAPA = 75;
 const int ALTO_MAPA = 38;
 const int TILE_SIZE = 16;
@@ -96,12 +98,7 @@ MainWindow::MainWindow(QWidget *parent)
     resize(1200, 608);
 
     scene = new QGraphicsScene(this);
-
     crearEscena();
-
-   inicializarBart();
-
-
     scene->setSceneRect(0, 0, 1200, 608);
 
     QGraphicsView *view = new QGraphicsView(scene, this);
@@ -120,149 +117,6 @@ void MainWindow::agregarObjeto(int x, int y, const QString &rutaImagen)
     QGraphicsPixmapItem *cuadroItem = scene->addPixmap(pixmapImagen);
     cuadroItem->setPos(x * TILE_SIZE, y * TILE_SIZE); // Posicionar en la cuadrícula
 }
-
-//
-void MainWindow::inicializarBart()
-{
-    // Cargar los sprites de Bart
-    spriteNormal = QPixmap("Sprits/bart_normal.png");
-    spriteCorriendo = QPixmap(":/sprites/bart_corriendo.png");
-    spriteEmpujando = QPixmap(":/sprites/bart_empujando.png");
-    spriteLanzando = QPixmap(":/sprites/bart_lanzando.png");
-
-    // Crear el item de Bart y añadirlo a la escena
-    bart = scene->addPixmap(spriteNormal);
-    bart->setPos(16, 544); // Posición inicial
-    bart->setZValue(1); // Para que Bart aparezca sobre el fondo
-}
-void MainWindow::keyPressEvent(QKeyEvent *event)
-{
-    int dx = 0, dy = 0;
-
-    switch (event->key()) {
-    case Qt::Key_Left:
-        dx = -velocidadBart;
-        bart->setTransform(QTransform().scale(-1, 1)); // Voltear sprite
-        break;
-    case Qt::Key_Right:
-        dx = velocidadBart;
-        bart->setTransform(QTransform().scale(1, 1)); // Normal
-        break;
-    case Qt::Key_Up:
-        dy = -velocidadBart;
-        break;
-    case Qt::Key_Down:
-        dy = velocidadBart;
-        break;
-    case Qt::Key_Shift: // Correr
-        if (!estaCorriendo) {
-            estaCorriendo = true;
-            velocidadBart = 10;
-            bart->setPixmap(spriteCorriendo);
-        }
-        break;
-    case Qt::Key_Space: // Empujar
-        if (!estaEmpujando) {
-            estaEmpujando = true;
-            bart->setPixmap(spriteEmpujando);
-        }
-        break;
-    case Qt::Key_E: // Agarrar/Soltar objeto
-        tieneObjeto = !tieneObjeto;
-        break;
-    case Qt::Key_F: // Lanzar cerveza
-        if (!tieneObjeto) {
-            lanzarCerveza();
-        }
-        break;
-    }
-
-    if (dx != 0 || dy != 0) {
-        moverBart(dx, dy);
-    }
-}
-
-void MainWindow::keyReleaseEvent(QKeyEvent *event)
-{
-    switch (event->key()) {
-    case Qt::Key_Shift:
-        estaCorriendo = false;
-        velocidadBart = 5;
-        bart->setPixmap(spriteNormal);
-        break;
-    case Qt::Key_Space:
-        estaEmpujando = false;
-        bart->setPixmap(spriteNormal);
-        break;
-    }
-}
-
-void MainWindow::moverBart(int dx, int dy)
-{
-    QPointF nuevaPos = bart->pos() + QPointF(dx, dy);
-
-    // Verificar colisiones
-    if (!checkCollision(nuevaPos.x(), nuevaPos.y())) {
-        bart->setPos(nuevaPos);
-    }
-}
-
-bool MainWindow::checkCollision(int newX, int newY)
-{
-    // Convertir coordenadas de píxeles a índices de la matriz
-    int tileX = newX / TILE_SIZE;
-    int tileY = newY / TILE_SIZE;
-
-    // Verificar límites del mapa
-    if (tileX < 0 || tileX >= ANCHO_MAPA || tileY < 0 || tileY >= ALTO_MAPA) {
-        return true;
-    }
-
-    // Verificar si hay muro (1) o pared (2)
-    return (mapa[tileY][tileX] == 1 || mapa[tileY][tileX] == 2);
-}
-
-void MainWindow::lanzarCerveza()
-{
-    QPixmap cerveza(":/sprites/cerveza.png");
-    QGraphicsPixmapItem *nuevaCerveza = scene->addPixmap(cerveza);
-
-    // Posicionar la cerveza en la posición de Bart
-    nuevaCerveza->setPos(bart->pos());
-
-    // Determinar la dirección basada en la orientación de Bart
-    int direccion = (bart->transform().m11() < 0) ? -1 : 1;
-
-    // Animación de lanzamiento
-    bart->setPixmap(spriteLanzando);
-
-    // Añadir la cerveza a la lista
-    cervezas.append(nuevaCerveza);
-
-    // Crear un timer para mover la cerveza
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, [=]() {
-        nuevaCerveza->setPos(nuevaCerveza->pos() + QPointF(10 * direccion, 0));
-
-        // Verificar colisiones con paredes
-        if (checkCollision(nuevaCerveza->pos().x(), nuevaCerveza->pos().y())) {
-            scene->removeItem(nuevaCerveza);
-            cervezas.removeOne(nuevaCerveza);
-            delete nuevaCerveza;
-            timer->stop();
-            timer->deleteLater();
-        }
-    });
-    timer->start(50);
-
-    // Volver al sprite normal después de un breve momento
-    QTimer::singleShot(200, [this]() {
-        bart->setPixmap(spriteNormal);
-    });
-}
-//
-
-
 
 void MainWindow::crearEscena() {
     QPixmap pixmapPared("Sprits/Pared.png");
@@ -291,7 +145,8 @@ void MainWindow::crearEscena() {
                 tileItem->setPos(j * TILE_SIZE, i * TILE_SIZE);
             }
         }
-    }agregarObjeto(1,6, "Sprits/cofre.png");
+    }
+    agregarObjeto(1,6, "Sprits/cofre.png");
     Item *key1 = new Item(7, 3, "Sprits/key1.png", "llaveR", "abrir la puerta1", "llave");
     scene->addItem(key1);
     agregarObjeto(6,1, "Sprits/cuadro.png");

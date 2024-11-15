@@ -27,4 +27,3 @@ void Entidad::setPosicion(int x, int y) {
     posicionY = y;
     setPos(x * 16, y * 16); // Actualizar posición en la escena
 }
-
