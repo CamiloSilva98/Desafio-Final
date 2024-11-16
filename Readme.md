@@ -11,7 +11,7 @@ La estructura del proyecto es la siguiente:
 
 - **`src/`**: Contiene todo el código fuente del proyecto, organizado en dos carpetas principales:
   - **`headers/`**: Contiene los archivos de cabecera (`.h`) que definen las interfaces de las clases y funciones.
-    - `GameWindow.h`: Define la ventana principal del juego.
+    - `MainWindow.h`: Define la ventana principal del juego.
     - `Character.h`: Define la clase base para los personajes del juego (Bart, Lisa, Homero).
     - `Bart.h`, `Lisa.h`, `Homer.h`: Archivos específicos para cada personaje.
     - `Level.h`: Define la estructura base de los niveles del juego.
@@ -21,7 +21,7 @@ La estructura del proyecto es la siguiente:
     - `utils.h`: Contiene funciones utilitarias, como el manejo de colisiones.
   - **`sources/`**: Contiene los archivos de implementación (`.cpp`), que contienen la lógica del juego.
     - `main.cpp`: El punto de entrada principal del juego.
-    - `GameWindow.cpp`: Implementación de la ventana principal del juego.
+    - `MainWindow.cpp`: Implementación de la ventana principal del juego.
     - `Character.cpp`: Implementación de la clase base para los personajes.
     - `Bart.cpp`, `Lisa.cpp`, `Homer.cpp`: Implementación de las clases específicas de los personajes.
     - `Level.cpp`: Implementación de la clase base para los niveles.
