@@ -27,8 +27,8 @@ int main()
         case 1: Problema2(); break;
         case 2: Problema4(); break;
         case 3: Problema6(); break;
-        //case 4: Problema8(); break;
-        //case 5: Problema10(); break;
+        case 4: Problema8(); break;
+        case 5: Problema10(); break;
         //case 6: Problema12(); break;
         //case 7: Problema14(); break;
         //case 8: Problema16(); break;

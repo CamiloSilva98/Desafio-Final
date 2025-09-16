@@ -2,14 +2,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <string>
+//#include <string>
 using namespace std;
 
 // Genera letras mayúsculas aleatorias
 void generarLetras(char *arreglo, int n)
 {
     srand(time(0));
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++)
     {
         *(arreglo + i) = 'A' + rand() % 26;
     }
@@ -17,11 +17,11 @@ void generarLetras(char *arreglo, int n)
 // Cuenta las repeticiones de cada letra
 void contarLetras(char *arreglo, int n, int *conteo)
 {
-    for (int i = 0; i < 26; i++) *(conteo + i) = 0;
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < 26; i++) *(conteo + i) = 0;
+    for(int i = 0; i < n; i++)
     {
         char letra = *(arreglo + i);
-        if (letra >= 'A' && letra <= 'Z')
+        if(letra >= 'A' && letra <= 'Z')
         {
             (*(conteo + (letra - 'A')))++;
         }
@@ -30,7 +30,7 @@ void contarLetras(char *arreglo, int n, int *conteo)
 // Imprime el conteo de letras
 void imprimirConteo(int *conteo)
 {
-    for (int i = 0; i < 26; i++)
+    for(int i = 0; i < 26; i++)
     {
         cout << char('A' + i) << ": " << *(conteo + i) << endl;
     }
@@ -43,7 +43,7 @@ void Problema2()
     int conteo[26];
     generarLetras(arreglo, N);
     cout << "Arreglo generado: ";
-    for (int i = 0; i < N; i++) cout << arreglo[i];
+    for(int i = 0; i < N; i++) cout << arreglo[i];
     cout << endl;
     contarLetras(arreglo, N, conteo);
     imprimirConteo(conteo);
@@ -51,7 +51,7 @@ void Problema2()
 int cadenaAEntero(const char *cadena)
 {
     int num = 0;
-    while (*cadena)
+    while(*cadena)
     {
         num = num * 10 + (*cadena - '0');
         cadena++;
@@ -69,9 +69,9 @@ void Problema4()
 }
 void CambiarMayusculas(string &cadena)
 {
-    for (size_t i = 0; i < cadena.length(); i++)
+    for(size_t i = 0; i < cadena.length(); i++)
     {
-        if (cadena[i] >= 'a' && cadena[i] <= 'z')
+        if(cadena[i] >= 'a' && cadena[i] <= 'z')
         {
             cadena[i] = cadena[i] - 32;  // pasa a mayúscula
         }
@@ -89,5 +89,70 @@ void Problema6()
 }
 void SepararLetraNumero(string &cadena)
 {
+    string num;
+    string text;
+    for(size_t i = 0; i < cadena.length(); i++)
+    {
+        if((cadena[i] >= 'a' && cadena[i] <= 'z') || (cadena[i] >= 'A' && cadena[i] <= 'Z'))
+        {
+            text += cadena[i];
+        }
+        else
+        {
+            num += cadena[i];
+        }
+    }
+    cout << "Texto: " << text << endl;
+    cout << "Numeros: " << num <<endl;
+}
+void Problema8()
+{
+    cin.ignore();
+    string cadena;
+    cout << "Ingrese una cadena: ";
+    getline(cin, cadena);
+    cout << "Original: " << cadena << endl;
+    SepararLetraNumero(cadena);
+}
+int romanoAEntero(const string &romano)
+{
+    int total = 0;
+    for (size_t i = 0; i < romano.length(); i++)
+    {
+        int actual = valorRomano(romano[i]);
+        int siguiente = (i + 1 < romano.length()) ? valorRomano(romano[i + 1]) : 0;
 
+        if (actual < siguiente)
+        {
+            total -= actual;  // se resta
+        }
+        else
+        {
+            total += actual;  // se suma
+        }
+    }
+    return total;
+}
+int valorRomano(char c)
+{
+    switch (c)
+    {
+    case 'M': return 1000;
+    case 'D': return 500;
+    case 'C': return 100;
+    case 'L': return 50;
+    case 'X': return 10;
+    case 'V': return 5;
+    case 'I': return 1;
+    default: return 0;
+    }
+}
+void Problema10()
+{
+    string romano;
+    cout << "Ingrese un numero romano en mayusculas: ";
+    cin >> romano;
+    int resultado = romanoAEntero(romano);
+    cout << "El numero ingresado fue: " << romano << endl;
+    cout << "Que corresponde a: " << resultado << endl;
 }
